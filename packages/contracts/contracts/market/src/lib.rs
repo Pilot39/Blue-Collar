@@ -1369,6 +1369,21 @@ fn get_role_members(env: &Env, role: &Symbol) -> Vec<Address> {
 // Tests
 // =============================================================================
 
+// =============================================================================
+// Optimised view helpers (issue #1148)
+// =============================================================================
+
+/// Per-call read-caching view helpers for all read-heavy query patterns.
+/// See module docs for the storage-read budget table.
+pub mod views;
+
+// =============================================================================
+// Storage-access benchmarks (issue #1148)
+// =============================================================================
+
+#[cfg(test)]
+mod contract_benchmarks;
+
 // Integration-style unit tests and the contract-upgrade testing framework
 // live in `test.rs`; the `mod tests` block below holds the original inline tests.
 #[cfg(test)]
